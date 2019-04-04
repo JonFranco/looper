@@ -1,0 +1,87 @@
+#N canvas 565 65 708 602 10;
+#X obj 73 165 inlet~;
+#X obj 186 342 delwrite~ delayLine0 10000;
+#X obj 186 269 *~;
+#X obj 201 244 sig~;
+#X obj 427 272 timer 1 msec;
+#X obj 73 400 outlet~;
+#X msg 265 294 clear;
+#X obj 356 374 *~;
+#X msg 356 251 0;
+#X msg 387 251 1;
+#X obj 356 284 sig~;
+#X obj 356 400 outlet~;
+#X obj 371 328 delread4~ delayLine0;
+#X obj 388 297 float;
+#X msg 236 215 0;
+#X msg 201 215 1;
+#X obj 440 165 spigot;
+#X obj 413 144 t b b;
+#X obj 274 126 t b b;
+#X obj 301 147 spigot;
+#X obj 400 198 t b b;
+#X obj 440 198 t b b b;
+#X obj 334 126 r bFirst;
+#X text 73 421 Audio Thru;
+#X text 359 419 Loop Out;
+#X text 73 137 Audio In;
+#X text 286 102 Record/ Overdub;
+#X text 428 116 Record Off;
+#X text 587 188 First Time?;
+#X obj 473 144 r bFirst;
+#X text 48 485 Looper based on a recirculating delay line. Needs improved
+controls and way of a implimenting button states so I can control all
+functions with just one or two midi buttons. Audio comes out divided
+so it can be subject to further processing. Obvious improvements: On/Off
+button \, volume control \, undo \, change tempo \, play backwards
+\, beat repeat. May be best implimented as a table read instead of
+a delay. -By Jon Wardle 09/30/2018;
+#X obj 303 10 inlet;
+#X obj 303 53 sel 0 1 2;
+#X obj 590 220 s bFirst;
+#X obj 596 146 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 569 104 1;
+#X obj 557 70 loadbang;
+#X msg 265 314 10000;
+#X msg 549 180 0;
+#X connect 0 0 2 0;
+#X connect 0 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 1;
+#X connect 4 0 13 1;
+#X connect 6 0 1 0;
+#X connect 6 0 37 0;
+#X connect 7 0 11 0;
+#X connect 8 0 10 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;
+#X connect 12 0 1 0;
+#X connect 12 0 7 1;
+#X connect 13 0 12 0;
+#X connect 14 0 3 0;
+#X connect 15 0 3 0;
+#X connect 16 0 21 0;
+#X connect 17 0 14 0;
+#X connect 17 1 16 0;
+#X connect 17 1 38 0;
+#X connect 18 0 15 0;
+#X connect 18 1 19 0;
+#X connect 19 0 20 0;
+#X connect 20 0 8 0;
+#X connect 20 1 4 0;
+#X connect 21 0 9 0;
+#X connect 21 1 13 0;
+#X connect 21 2 4 1;
+#X connect 22 0 19 1;
+#X connect 29 0 16 1;
+#X connect 31 0 32 0;
+#X connect 32 0 6 0;
+#X connect 32 0 35 0;
+#X connect 32 1 18 0;
+#X connect 32 2 17 0;
+#X connect 34 0 33 0;
+#X connect 35 0 34 0;
+#X connect 36 0 35 0;
+#X connect 37 0 12 0;
+#X connect 38 0 34 0;
